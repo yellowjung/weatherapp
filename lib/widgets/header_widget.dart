@@ -16,15 +16,17 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   String date = DateFormat("yMMMMd").format(DateTime.now());
 
-  final GlobalController globalController = Get.put(GlobalController(), permanent: true);
+  final GlobalController globalController =
+      Get.put(GlobalController(), permanent: true);
 
   @override
   void initState() {
-    getAddress(globalController.getLattitude().value, globalController.getLongitude().value);
+    getAddress(globalController.getLattitude().value,
+        globalController.getLongitude().value);
     super.initState();
   }
 
-  getAddress(lat, lon) async{
+  getAddress(lat, lon) async {
     List<Placemark> placeMark = await placemarkFromCoordinates(lat, lon);
     Placemark place = placeMark[0];
     setState(() {
@@ -49,7 +51,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           alignment: Alignment.topLeft,
           child: Text(
             date,
-            style: TextStyle(fontSize: 14, color: Colors.grey[700], height: 1.5),
+            style:
+                TextStyle(fontSize: 14, color: Colors.grey[700], height: 1.5),
           ),
         )
       ],
